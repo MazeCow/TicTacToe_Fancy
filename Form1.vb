@@ -193,90 +193,138 @@ Public Class Form1
 
 
     'Edit this function to return the coordinates of an almost win
-    Private Function check_for_almostwin(coords As Array) As Array
-        Dim type As String = cells(coords(0), coords(1)).Tag
-        Dim count As Integer
-        Dim winner As Boolean = False
+    Private Function check_for_block() As PictureBox
+        If cells(0, 2).Tag = "X" AndAlso cells(1, 2).Tag = "X" AndAlso cells(2, 2).Tag = "" Then
+            Return cells(2, 2)
+        ElseIf cells(0, 2).Tag = "X" AndAlso cells(2, 2).Tag = "X" AndAlso cells(1, 2).Tag = "" Then
+            Return cells(1, 2)
+        ElseIf cells(1, 2).Tag = "X" AndAlso cells(2, 2).Tag = "X" AndAlso cells(0, 2).Tag = "" Then
+            Return cells(0, 2)
 
-        Dim move_x As Integer
-        Dim move_y As Integer
-        Dim newarray As List(Of PictureBox)
+        ElseIf cells(0, 1).Tag = "X" AndAlso cells(1, 1).Tag = "X" AndAlso cells(2, 1).Tag = "" Then
+            Return cells(2, 1)
+        ElseIf cells(0, 1).Tag = "X" AndAlso cells(2, 1).Tag = "X" AndAlso cells(1, 1).Tag = "" Then
+            Return cells(1, 1)
+        ElseIf cells(1, 1).Tag = "X" AndAlso cells(2, 1).Tag = "X" AndAlso cells(0, 1).Tag = "" Then
+            Return cells(0, 1)
 
-        Dim diagonal As Array = {coords(0) - 2, coords(1) + 2}
-        count = 0
-        move_x = 1
-        move_y = -1
+        ElseIf cells(0, 0).Tag = "X" AndAlso cells(1, 0).Tag = "X" AndAlso cells(2, 0).Tag = "" Then
+            Return cells(2, 0)
+        ElseIf cells(0, 0).Tag = "X" AndAlso cells(2, 0).Tag = "X" AndAlso cells(1, 0).Tag = "" Then
+            Return cells(1, 0)
+        ElseIf cells(1, 0).Tag = "X" AndAlso cells(2, 0).Tag = "X" AndAlso cells(0, 0).Tag = "" Then
+            Return cells(0, 0)
 
 
-        For i As Integer = 0 To 4
-            If CheckCoordinatesExistInArray(cells, diagonal(0), diagonal(1)) AndAlso cells(diagonal(0), diagonal(1)).Tag = type Then
-                last_three_pics(count) = cells(diagonal(0), diagonal(1))
-                newarray.Add()
-                count += 1
-            End If
-            If count = 2 Then
-                Return True
-            End If
-            diagonal(0) += move_x
-            diagonal(1) += move_y
-        Next
 
-        Dim diagonal2 As Array = {coords(0) - 2, coords(1) - 2}
-        count = 0
-        move_x = 1
-        move_y = 1
-        For i As Integer = 0 To 4
-            If CheckCoordinatesExistInArray(cells, diagonal2(0), diagonal2(1)) AndAlso cells(diagonal2(0), diagonal2(1)).Tag = type Then
-                last_three_pics(count) = cells(diagonal2(0), diagonal2(1))
-                count += 1
-            Else
-                count = 0
-            End If
-            If count = 3 Then
-                Return True
-            End If
-            diagonal2(0) += move_x
-            diagonal2(1) += move_y
-        Next
 
-        Dim verticle As Array = {coords(0), coords(1) + 2}
-        count = 0
-        move_x = 0
-        move_y = -1
-        For i As Integer = 0 To 4
-            If CheckCoordinatesExistInArray(cells, verticle(0), verticle(1)) AndAlso cells(verticle(0), verticle(1)).Tag = type Then
-                last_three_pics(count) = cells(verticle(0), verticle(1))
-                count += 1
-            Else
-                count = 0
-            End If
-            If count = 3 Then
-                Return True
-            End If
-            verticle(0) += move_x
-            verticle(1) += move_y
-        Next
+        ElseIf cells(0, 0).Tag = "X" AndAlso cells(0, 1).Tag = "X" AndAlso cells(0, 2).Tag = "" Then
+            Return cells(0, 2)
+        ElseIf cells(0, 0).Tag = "X" AndAlso cells(0, 2).Tag = "X" AndAlso cells(0, 1).Tag = "" Then
+            Return cells(0, 1)
+        ElseIf cells(0, 1).Tag = "X" AndAlso cells(0, 2).Tag = "X" AndAlso cells(0, 0).Tag = "" Then
+            Return cells(0, 0)
 
-        Dim horizontal As Array = {coords(0) - 2, coords(1)}
-        count = 0
-        move_x = 1
-        move_y = 0
-        For i As Integer = 0 To 4
-            If CheckCoordinatesExistInArray(cells, horizontal(0), horizontal(1)) AndAlso cells(horizontal(0), horizontal(1)).Tag = type Then
-                last_three_pics(count) = cells(horizontal(0), horizontal(1))
-                count += 1
-            Else
-                count = 0
-            End If
-            If count = 3 Then
-                Return True
-            End If
-            horizontal(0) += move_x
-            horizontal(1) += move_y
-        Next
+        ElseIf cells(1, 0).Tag = "X" AndAlso cells(1, 1).Tag = "X" AndAlso cells(1, 2).Tag = "" Then
+            Return cells(1, 2)
+        ElseIf cells(1, 0).Tag = "X" AndAlso cells(1, 2).Tag = "X" AndAlso cells(1, 1).Tag = "" Then
+            Return cells(1, 1)
+        ElseIf cells(1, 1).Tag = "X" AndAlso cells(1, 2).Tag = "X" AndAlso cells(1, 0).Tag = "" Then
+            Return cells(1, 0)
 
-        Return False
+        ElseIf cells(2, 0).Tag = "X" AndAlso cells(2, 1).Tag = "X" AndAlso cells(2, 2).Tag = "" Then
+            Return cells(2, 2)
+        ElseIf cells(2, 0).Tag = "X" AndAlso cells(2, 2).Tag = "X" AndAlso cells(2, 1).Tag = "" Then
+            Return cells(2, 1)
+        ElseIf cells(2, 1).Tag = "X" AndAlso cells(2, 2).Tag = "X" AndAlso cells(2, 0).Tag = "" Then
+            Return cells(2, 0)
+
+
+
+        ElseIf cells(0, 2).Tag = "X" AndAlso cells(2, 0).Tag = "X" AndAlso cells(1, 1).Tag = "" Then
+            Return cells(1, 1)
+        ElseIf cells(0, 2).Tag = "X" AndAlso cells(1, 1).Tag = "X" AndAlso cells(2, 0).Tag = "" Then
+            Return cells(2, 0)
+        ElseIf cells(1, 1).Tag = "X" AndAlso cells(0, 2).Tag = "X" AndAlso cells(0, 2).Tag = "" Then
+            Return cells(0, 2)
+
+        ElseIf cells(2, 2).Tag = "X" AndAlso cells(0, 0).Tag = "X" AndAlso cells(1, 1).Tag = "" Then
+            Return cells(1, 1)
+        ElseIf cells(1, 1).Tag = "X" AndAlso cells(2, 2).Tag = "X" AndAlso cells(0, 0).Tag = "" Then
+            Return cells(0, 0)
+        ElseIf cells(0, 0).Tag = "X" AndAlso cells(1, 1).Tag = "X" AndAlso cells(2, 2).Tag <> "X" AndAlso cells(2, 2).Tag <> "O" Then
+            Return cells(2, 2)
+        End If
+
+        Return Nothing
     End Function
+
+    Private Function check_for_winspot() As PictureBox
+        If cells(0, 2).Tag = "O" AndAlso cells(1, 2).Tag = "O" AndAlso cells(2, 2).Tag <> "X" AndAlso cells(2, 2).Tag <> "O" Then
+            Return cells(2, 2)
+        ElseIf cells(0, 2).Tag = "O" AndAlso cells(2, 2).Tag = "O" AndAlso cells(1, 2).Tag <> "X" AndAlso cells(1, 2).Tag <> "O" Then
+            Return cells(1, 2)
+        ElseIf cells(1, 2).Tag = "O" AndAlso cells(2, 2).Tag = "O" AndAlso cells(0, 2).Tag <> "X" AndAlso cells(0, 2).Tag <> "O" Then
+            Return cells(0, 2)
+
+        ElseIf cells(0, 1).Tag = "O" AndAlso cells(1, 1).Tag = "O" AndAlso cells(2, 1).Tag <> "X" AndAlso cells(2, 1).Tag <> "O" Then
+            Return cells(2, 1)
+        ElseIf cells(0, 1).Tag = "O" AndAlso cells(2, 1).Tag = "O" AndAlso cells(1, 1).Tag <> "X" AndAlso cells(1, 1).Tag <> "O" Then
+            Return cells(1, 1)
+        ElseIf cells(1, 1).Tag = "O" AndAlso cells(2, 1).Tag = "O" AndAlso cells(0, 1).Tag <> "X" AndAlso cells(0, 1).Tag <> "O" Then
+            Return cells(0, 1)
+
+        ElseIf cells(0, 0).Tag = "O" AndAlso cells(1, 0).Tag = "O" AndAlso cells(2, 0).Tag <> "X" AndAlso cells(2, 0).Tag <> "O" Then
+            Return cells(2, 0)
+        ElseIf cells(0, 0).Tag = "O" AndAlso cells(2, 0).Tag = "O" AndAlso cells(1, 0).Tag <> "X" AndAlso cells(1, 0).Tag <> "O" Then
+            Return cells(1, 0)
+        ElseIf cells(1, 0).Tag = "O" AndAlso cells(2, 0).Tag = "O" AndAlso cells(0, 0).Tag <> "X" AndAlso cells(0, 0).Tag <> "O" Then
+            Return cells(0, 0)
+
+
+
+
+        ElseIf cells(0, 0).Tag = "O" AndAlso cells(0, 1).Tag = "O" AndAlso cells(0, 2).Tag <> "X" AndAlso cells(0, 1).Tag <> "O" Then
+            Return cells(0, 2)
+        ElseIf cells(0, 0).Tag = "O" AndAlso cells(0, 2).Tag = "O" AndAlso cells(0, 1).Tag <> "X" AndAlso cells(0, 1).Tag <> "O" Then
+            Return cells(0, 1)
+        ElseIf cells(0, 1).Tag = "O" AndAlso cells(0, 2).Tag = "O" AndAlso cells(0, 0).Tag <> "X" AndAlso cells(0, 0).Tag <> "O" Then
+            Return cells(0, 0)
+
+        ElseIf cells(1, 0).Tag = "O" AndAlso cells(1, 1).Tag = "O" AndAlso cells(1, 2).Tag <> "X" AndAlso cells(1, 2).Tag <> "O" Then
+            Return cells(1, 2)
+        ElseIf cells(1, 0).Tag = "O" AndAlso cells(1, 2).Tag = "O" AndAlso cells(1, 1).Tag <> "X" AndAlso cells(1, 1).Tag <> "O" Then
+            Return cells(1, 1)
+        ElseIf cells(1, 1).Tag = "O" AndAlso cells(1, 2).Tag = "O" AndAlso cells(1, 0).Tag <> "X" AndAlso cells(1, 0).Tag <> "O" Then
+            Return cells(1, 0)
+
+        ElseIf cells(2, 0).Tag = "O" AndAlso cells(2, 1).Tag = "O" AndAlso cells(2, 2).Tag <> "X" AndAlso cells(2, 2).Tag <> "O" Then
+            Return cells(2, 2)
+        ElseIf cells(2, 0).Tag = "O" AndAlso cells(2, 2).Tag = "O" AndAlso cells(2, 1).Tag <> "X" AndAlso cells(2, 1).Tag <> "O" Then
+            Return cells(2, 1)
+        ElseIf cells(2, 1).Tag = "O" AndAlso cells(2, 2).Tag = "O" AndAlso cells(2, 0).Tag <> "X" AndAlso cells(2, 0).Tag <> "O" Then
+            Return cells(2, 0)
+
+
+
+        ElseIf cells(0, 2).Tag = "O" AndAlso cells(2, 0).Tag = "O" AndAlso cells(1, 1).Tag <> "X" AndAlso cells(1, 1).Tag <> "O" Then
+            Return cells(1, 1)
+        ElseIf cells(0, 2).Tag = "O" AndAlso cells(1, 1).Tag = "O" AndAlso cells(2, 0).Tag <> "X" AndAlso cells(2, 0).Tag <> "O" Then
+            Return cells(2, 0)
+        ElseIf cells(1, 1).Tag = "O" AndAlso cells(0, 2).Tag = "O" AndAlso cells(0, 2).Tag <> "X" AndAlso cells(0, 2).Tag <> "O" Then
+            Return cells(0, 2)
+
+        ElseIf cells(2, 2).Tag = "O" AndAlso cells(0, 0).Tag = "O" AndAlso cells(1, 1).Tag <> "X" AndAlso cells(1, 1).Tag <> "O" Then
+            Return cells(1, 1)
+        ElseIf cells(1, 1).Tag = "O" AndAlso cells(2, 2).Tag = "O" AndAlso cells(0, 0).Tag <> "X" AndAlso cells(0, 0).Tag <> "O" Then
+            Return cells(0, 0)
+        ElseIf cells(0, 0).Tag = "O" AndAlso cells(1, 1).Tag = "O" AndAlso cells(2, 2).Tag <> "X" AndAlso cells(2, 2).Tag <> "O" Then
+            Return cells(2, 2)
+        End If
+
+        Return Nothing
+    End Function
+
     Private Function CheckForTie() As Boolean
         Dim tie As Boolean = True
         For Each item In cells
@@ -288,6 +336,7 @@ Public Class Form1
     End Function
 
     Private Sub cell_hover(sender As PictureBox, e As EventArgs)
+        Console.WriteLine("TAG: " & sender.Tag)
         If Not menuopen Then
             If sender.Tag = "" Then
                 If current_players_turn = "X" Then
@@ -393,13 +442,17 @@ Public Class Form1
     End Sub
 
     Private Sub ComputerDefense()
-        Dim foundmove As Boolean = False
+        Dim foundmove As PictureBox = check_for_winspot()
+        If foundmove Is Nothing Then
+            foundmove = check_for_block()
+        End If
 
-
-        If Not foundmove Then
+        If foundmove Is Nothing Then
             Dim choices As Array = GetAllEmptys()
             Dim randomIndex As Integer = New Random().Next(0, choices.Length)
             cell_click(choices(randomIndex), EventArgs.Empty)
+        Else
+            cell_click(foundmove, EventArgs.Empty)
         End If
     End Sub
 

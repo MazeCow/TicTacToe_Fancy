@@ -63,7 +63,7 @@ Partial Class Form1
         Me.SettingsToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
         Me.SettingsToolStripMenuItem.Padding = New System.Windows.Forms.Padding(0)
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(57, 24)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(58, 24)
         Me.SettingsToolStripMenuItem.Text = "Settings"
         '
         'tsmiPlayer
@@ -73,7 +73,7 @@ Partial Class Form1
         Me.tsmiPlayer.ForeColor = System.Drawing.Color.White
         Me.tsmiPlayer.Name = "tsmiPlayer"
         Me.tsmiPlayer.Padding = New System.Windows.Forms.Padding(0)
-        Me.tsmiPlayer.Size = New System.Drawing.Size(180, 20)
+        Me.tsmiPlayer.Size = New System.Drawing.Size(157, 20)
         Me.tsmiPlayer.Text = "Player Mode"
         Me.tsmiPlayer.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay
         '
@@ -104,7 +104,7 @@ Partial Class Form1
         Me.tsmiStartingPiece.ForeColor = System.Drawing.Color.White
         Me.tsmiStartingPiece.Name = "tsmiStartingPiece"
         Me.tsmiStartingPiece.Padding = New System.Windows.Forms.Padding(0)
-        Me.tsmiStartingPiece.Size = New System.Drawing.Size(180, 20)
+        Me.tsmiStartingPiece.Size = New System.Drawing.Size(157, 20)
         Me.tsmiStartingPiece.Text = "Starting Piece"
         '
         'optnX
