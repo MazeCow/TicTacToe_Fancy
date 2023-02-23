@@ -25,16 +25,20 @@ Partial Class Form1
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.titleBar = New System.Windows.Forms.MenuStrip()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmiPlayer = New System.Windows.Forms.ToolStripMenuItem()
+        Me.optnSingle = New System.Windows.Forms.ToolStripMenuItem()
+        Me.optnTwo = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmiStartingPiece = New System.Windows.Forms.ToolStripMenuItem()
+        Me.optnX = New System.Windows.Forms.ToolStripMenuItem()
+        Me.optnO = New System.Windows.Forms.ToolStripMenuItem()
         Me.board = New System.Windows.Forms.FlowLayoutPanel()
         Me.lblTurn = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.lblXWins = New System.Windows.Forms.Label()
-        Me.lblYWins = New System.Windows.Forms.Label()
+        Me.lblOWins = New System.Windows.Forms.Label()
         Me.btnMinimize = New System.Windows.Forms.Button()
         Me.btnExit = New System.Windows.Forms.Button()
-        Me.TwoPlayerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.lblXWins = New System.Windows.Forms.Label()
         Me.titleBar.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -45,6 +49,7 @@ Partial Class Form1
         Me.titleBar.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SettingsToolStripMenuItem})
         Me.titleBar.Location = New System.Drawing.Point(0, 0)
         Me.titleBar.Name = "titleBar"
+        Me.titleBar.Padding = New System.Windows.Forms.Padding(0)
         Me.titleBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
         Me.titleBar.Size = New System.Drawing.Size(345, 24)
         Me.titleBar.TabIndex = 0
@@ -53,24 +58,76 @@ Partial Class Form1
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(20, Byte), Integer), CType(CType(20, Byte), Integer), CType(CType(20, Byte), Integer))
-        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.TwoPlayerToolStripMenuItem})
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiPlayer, Me.tsmiStartingPiece})
         Me.SettingsToolStripMenuItem.Font = New System.Drawing.Font("Microsoft PhagsPa", 9.0!, System.Drawing.FontStyle.Bold)
         Me.SettingsToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(65, 20)
+        Me.SettingsToolStripMenuItem.Padding = New System.Windows.Forms.Padding(0)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(57, 24)
         Me.SettingsToolStripMenuItem.Text = "Settings"
         '
-        'ToolStripMenuItem1
+        'tsmiPlayer
         '
-        Me.ToolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(31, Byte), Integer))
-        Me.ToolStripMenuItem1.Checked = True
-        Me.ToolStripMenuItem1.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.ToolStripMenuItem1.ForeColor = System.Drawing.Color.White
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(148, 22)
-        Me.ToolStripMenuItem1.Text = "Two Player"
-        Me.ToolStripMenuItem1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal
-        Me.ToolStripMenuItem1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.tsmiPlayer.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(31, Byte), Integer))
+        Me.tsmiPlayer.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.optnSingle, Me.optnTwo})
+        Me.tsmiPlayer.ForeColor = System.Drawing.Color.White
+        Me.tsmiPlayer.Name = "tsmiPlayer"
+        Me.tsmiPlayer.Padding = New System.Windows.Forms.Padding(0)
+        Me.tsmiPlayer.Size = New System.Drawing.Size(180, 20)
+        Me.tsmiPlayer.Text = "Player Mode"
+        Me.tsmiPlayer.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay
+        '
+        'optnSingle
+        '
+        Me.optnSingle.AutoSize = False
+        Me.optnSingle.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(31, Byte), Integer))
+        Me.optnSingle.ForeColor = System.Drawing.Color.White
+        Me.optnSingle.Name = "optnSingle"
+        Me.optnSingle.Size = New System.Drawing.Size(180, 22)
+        Me.optnSingle.Text = "Single Player (P vs. C)"
+        '
+        'optnTwo
+        '
+        Me.optnTwo.AutoSize = False
+        Me.optnTwo.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(31, Byte), Integer))
+        Me.optnTwo.Checked = True
+        Me.optnTwo.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.optnTwo.ForeColor = System.Drawing.Color.White
+        Me.optnTwo.Name = "optnTwo"
+        Me.optnTwo.Size = New System.Drawing.Size(180, 22)
+        Me.optnTwo.Text = "Two Player (P vs. P)"
+        '
+        'tsmiStartingPiece
+        '
+        Me.tsmiStartingPiece.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(31, Byte), Integer))
+        Me.tsmiStartingPiece.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.optnX, Me.optnO})
+        Me.tsmiStartingPiece.ForeColor = System.Drawing.Color.White
+        Me.tsmiStartingPiece.Name = "tsmiStartingPiece"
+        Me.tsmiStartingPiece.Padding = New System.Windows.Forms.Padding(0)
+        Me.tsmiStartingPiece.Size = New System.Drawing.Size(180, 20)
+        Me.tsmiStartingPiece.Text = "Starting Piece"
+        '
+        'optnX
+        '
+        Me.optnX.AutoSize = False
+        Me.optnX.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(31, Byte), Integer))
+        Me.optnX.Checked = True
+        Me.optnX.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.optnX.ForeColor = System.Drawing.Color.White
+        Me.optnX.Name = "optnX"
+        Me.optnX.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.optnX.Size = New System.Drawing.Size(180, 22)
+        Me.optnX.Text = "X"
+        '
+        'optnO
+        '
+        Me.optnO.AutoSize = False
+        Me.optnO.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(31, Byte), Integer))
+        Me.optnO.ForeColor = System.Drawing.Color.White
+        Me.optnO.Name = "optnO"
+        Me.optnO.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.optnO.Size = New System.Drawing.Size(180, 22)
+        Me.optnO.Text = "O"
         '
         'board
         '
@@ -94,45 +151,34 @@ Partial Class Form1
         '
         Me.Label2.Font = New System.Drawing.Font("Microsoft PhagsPa", 18.0!, System.Drawing.FontStyle.Bold)
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(28, 413)
+        Me.Label2.Location = New System.Drawing.Point(19, 412)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(104, 37)
         Me.Label2.TabIndex = 5
-        Me.Label2.Text = "X Wins"
+        Me.Label2.Text = "X Wins:"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label3
         '
         Me.Label3.Font = New System.Drawing.Font("Microsoft PhagsPa", 18.0!, System.Drawing.FontStyle.Bold)
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(211, 414)
+        Me.Label3.Location = New System.Drawing.Point(188, 412)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(104, 37)
         Me.Label3.TabIndex = 6
-        Me.Label3.Text = "Y Wins"
+        Me.Label3.Text = "O Wins:"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'lblXWins
+        'lblOWins
         '
-        Me.lblXWins.Font = New System.Drawing.Font("Microsoft PhagsPa", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.lblXWins.ForeColor = System.Drawing.Color.White
-        Me.lblXWins.Location = New System.Drawing.Point(28, 450)
-        Me.lblXWins.Name = "lblXWins"
-        Me.lblXWins.Size = New System.Drawing.Size(104, 37)
-        Me.lblXWins.TabIndex = 7
-        Me.lblXWins.Text = "0"
-        Me.lblXWins.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lblYWins
-        '
-        Me.lblYWins.Font = New System.Drawing.Font("Microsoft PhagsPa", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.lblYWins.ForeColor = System.Drawing.Color.White
-        Me.lblYWins.Location = New System.Drawing.Point(211, 450)
-        Me.lblYWins.Name = "lblYWins"
-        Me.lblYWins.Size = New System.Drawing.Size(104, 37)
-        Me.lblYWins.TabIndex = 8
-        Me.lblYWins.Text = "0"
-        Me.lblYWins.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblOWins.Font = New System.Drawing.Font("Microsoft PhagsPa", 18.0!, System.Drawing.FontStyle.Bold)
+        Me.lblOWins.ForeColor = System.Drawing.Color.White
+        Me.lblOWins.Location = New System.Drawing.Point(289, 412)
+        Me.lblOWins.Name = "lblOWins"
+        Me.lblOWins.Size = New System.Drawing.Size(34, 37)
+        Me.lblOWins.TabIndex = 8
+        Me.lblOWins.Text = "0"
+        Me.lblOWins.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'btnMinimize
         '
@@ -158,22 +204,25 @@ Partial Class Form1
         Me.btnExit.TabIndex = 1
         Me.btnExit.UseVisualStyleBackColor = True
         '
-        'TwoPlayerToolStripMenuItem
+        'lblXWins
         '
-        Me.TwoPlayerToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(31, Byte), Integer), CType(CType(31, Byte), Integer), CType(CType(31, Byte), Integer))
-        Me.TwoPlayerToolStripMenuItem.ForeColor = System.Drawing.Color.White
-        Me.TwoPlayerToolStripMenuItem.Name = "TwoPlayerToolStripMenuItem"
-        Me.TwoPlayerToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.TwoPlayerToolStripMenuItem.Text = "Single Player"
+        Me.lblXWins.Font = New System.Drawing.Font("Microsoft PhagsPa", 18.0!, System.Drawing.FontStyle.Bold)
+        Me.lblXWins.ForeColor = System.Drawing.Color.White
+        Me.lblXWins.Location = New System.Drawing.Point(120, 412)
+        Me.lblXWins.Name = "lblXWins"
+        Me.lblXWins.Size = New System.Drawing.Size(34, 37)
+        Me.lblXWins.TabIndex = 9
+        Me.lblXWins.Text = "0"
+        Me.lblXWins.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(39, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(345, 501)
-        Me.Controls.Add(Me.lblYWins)
+        Me.ClientSize = New System.Drawing.Size(345, 471)
         Me.Controls.Add(Me.lblXWins)
+        Me.Controls.Add(Me.lblOWins)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.lblTurn)
@@ -198,9 +247,13 @@ Partial Class Form1
     Friend WithEvents lblTurn As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents lblXWins As Label
-    Friend WithEvents lblYWins As Label
+    Friend WithEvents lblOWins As Label
     Friend WithEvents SettingsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents TwoPlayerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents tsmiPlayer As ToolStripMenuItem
+    Friend WithEvents optnSingle As ToolStripMenuItem
+    Friend WithEvents optnTwo As ToolStripMenuItem
+    Friend WithEvents tsmiStartingPiece As ToolStripMenuItem
+    Friend WithEvents optnX As ToolStripMenuItem
+    Friend WithEvents optnO As ToolStripMenuItem
+    Friend WithEvents lblXWins As Label
 End Class
